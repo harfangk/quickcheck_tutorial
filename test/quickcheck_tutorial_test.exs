@@ -51,6 +51,12 @@ defmodule QuickcheckTutorialTest do
     end
   end
 
+  property "Empty list has length of 0" do
+    forall l <- (such_that l <- list(int()), do: l == []) do
+      ensure length(l) == 0
+    end
+  end
+
   property "String.reverse is inverse of reverse" do
     forall str <- utf8() do
       ensure str == str |> String.reverse() |> String.reverse()

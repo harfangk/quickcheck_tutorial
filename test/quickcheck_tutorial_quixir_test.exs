@@ -30,7 +30,7 @@ defmodule QuickcheckTutorialQuixirTest do
 
   test "Base64 decode is inverse of decode" do
     ptest [str: string()] do
-      :base64.decode(:base64.encode(str)) == str
+      assert :base64.decode(:base64.encode(str)) == str
     end
   end
   
