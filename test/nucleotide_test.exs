@@ -1,6 +1,6 @@
 defmodule NucleotideCountTest do
   # These tests are taken from Exercism Elixir track.
-  
+
   use ExUnit.Case
   use EQC.ExUnit
 

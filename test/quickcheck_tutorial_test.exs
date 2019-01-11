@@ -34,7 +34,7 @@ defmodule QuickcheckTutorialTest do
       :base64.decode(:base64.encode(str)) == str
     end
   end
-  
+
   property "All quicksort implementations are equivalent" do
     forall list <- list(int()) do
       ensure quicksort_dual_pivot(list) == quicksort_naive(list)
@@ -45,8 +45,8 @@ defmodule QuickcheckTutorialTest do
   end
 
   property "Addition of two natural numbers should be greater than or equal to either" do
-    forall {n, m} <- {nat(), nat()} do
-      ensure (n + m) >= n 
+    forall {n, m} <- {int(), nat()} do
+      ensure (n + m) >= n
       ensure (n + m) >= m
     end
   end
@@ -63,13 +63,19 @@ defmodule QuickcheckTutorialTest do
     end
   end
 
-  # Exercise 1: For any integer x, square of x should be larger than x
+  # Exercise 1: For any integer x, square of x should be greater than or equal
+  # to x
   # Use: int/0, :math.pow/2
-  
+  property "Square of integer x should be larger than x" do
+    forall x <- int() do
+      ensure x * x >= x
+    end
+  end
+
   # Exercise 2: For any string s, encoding s to base64 and then decoding
   # the base64-encoded string to plain string should yield s
   # Use: utf8/0, :base64.encode/1, :base64.decode/1
-  
+
   # Exercise 3: For any integer list l,
   # and for any function f that takes an integer as argument,
   # the result of mapping f over l should have same length as l

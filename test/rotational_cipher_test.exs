@@ -71,7 +71,7 @@ defmodule RotationalCipherTest do
       ensure plaintext == RotationalCipher.rotate(RotationalCipher.rotate(plaintext, n), additive_inverse_of_n_mod26) 
     end
   end
-  
+
   test "Quixir: ROT(n) is decoded by ROT(additive inverse of n modulo 26)" do
     ptest [plaintext: string(), n: Pollution.VG.int(min: 0)] do
       additive_inverse_of_n_mod26 = 26 - rem(n, 26)
